@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/calibration_case.schema.json",
+  "title": "CalibrationCase",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "scenario",
+    "expected_primary_lenses",
+    "expected_confusions",
+    "calibration_questions",
+    "failure_mode"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "scenario": { "type": "string" },
+    "expected_primary_lenses": { "type": "array", "items": { "type": "string" } },
+    "expected_confusions": { "type": "array", "items": { "type": "string" } },
+    "calibration_questions": { "type": "array", "items": { "type": "string" } },
+    "failure_mode": { "type": "string" }
+  }
+}

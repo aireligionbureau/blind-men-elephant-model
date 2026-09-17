@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/micro_lens.schema.json",
+  "title": "MicroLens",
+  "type": "object",
+  "required": [
+    "id",
+    "parent_lens",
+    "name",
+    "source_work",
+    "mechanism",
+    "trigger_signals",
+    "diagnostic_questions",
+    "differentiates_from",
+    "inversion_hint",
+    "misuse_warning"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "parent_lens": { "type": "string" },
+    "name": { "type": "string" },
+    "source_work": { "type": "string" },
+    "mechanism": { "type": "string" },
+    "trigger_signals": { "type": "array", "items": { "type": "string" } },
+    "diagnostic_questions": { "type": "array", "items": { "type": "string" } },
+    "differentiates_from": { "type": "array", "items": { "type": "string" } },
+    "inversion_hint": { "type": "string" },
+    "misuse_warning": { "type": "string" }
+  }
+}

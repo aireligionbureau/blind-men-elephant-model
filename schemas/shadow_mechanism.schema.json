@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/shadow_mechanism.schema.json",
+  "title": "ShadowMechanism",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "shadow_family",
+    "core_mechanism",
+    "generation_chain",
+    "chain_stages",
+    "visible_signals",
+    "capture_questions",
+    "false_positive_risks",
+    "false_negative_risks",
+    "linked_lenses",
+    "puzzle_material"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "shadow_family": { "type": "string" },
+    "core_mechanism": { "type": "string" },
+    "generation_chain": { "type": "array", "items": { "type": "string" } },
+    "chain_stages": { "type": "array", "items": { "type": "string" } },
+    "visible_signals": { "type": "array", "items": { "type": "string" } },
+    "capture_questions": { "type": "array", "items": { "type": "string" } },
+    "false_positive_risks": { "type": "array", "items": { "type": "string" } },
+    "false_negative_risks": { "type": "array", "items": { "type": "string" } },
+    "linked_lenses": { "type": "array", "items": { "type": "string" } },
+    "puzzle_material": { "type": "string" }
+  }
+}

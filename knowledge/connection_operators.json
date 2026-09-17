@@ -1,0 +1,123 @@
+[
+  {
+    "id": "argument_bridge_search",
+    "lens_ids": ["argument_forensics"],
+    "trigger_piece_kinds": ["fracture", "distortion", "retained_local"],
+    "candidate_relation_types": ["causal_relay", "conditional_complement", "scope_refinement", "diagnostic_challenge"],
+    "partner_piece_kinds": ["evidence_claim", "retained_local", "assumption", "observed_claim"],
+    "constructive_task": "把缺失前提、时间桥、范围桥或因果中介变成搭档材料的搜索条件，检查另一位数字人是否看见了这段桥。",
+    "proof_obligations": ["两端必须讨论同一对象或明确的相邻因果阶段", "必须指出中介变量及其方向", "相关性不能冒充因果接力"],
+    "forbidden_inferences": ["不能因为发现断裂就认定原结论为假", "不能由经典知识补写缺失的现实中介"],
+    "priority": 10
+  },
+  {
+    "id": "argument_scope_repair",
+    "lens_ids": ["argument_forensics"],
+    "trigger_piece_kinds": ["distortion", "fracture"],
+    "candidate_relation_types": ["scope_refinement", "non_comparable", "conditional_complement"],
+    "partner_piece_kinds": ["retained_local", "evidence_claim", "observed_claim"],
+    "constructive_task": "寻找能够限定局部观察适用范围、时间和条件的材料，让局部内容以正确尺寸进入拼图。",
+    "proof_obligations": ["写清局部材料实际覆盖的范围", "写清结论越过了哪一层", "搭档材料只能修复范围，不能自动给出相反答案"],
+    "forbidden_inferences": ["不能把缩小范围写成否定局部事实", "不能用两个相反局部计算中点"],
+    "priority": 9
+  },
+  {
+    "id": "shadow_mechanism_crosscheck",
+    "lens_ids": ["argument_forensics", "bias_heuristics", "ecological_rationality", "expert_failure", "noise", "paradigm", "social_influence", "interpreter", "emotion_reason"],
+    "trigger_piece_kinds": ["distortion", "fracture"],
+    "candidate_relation_types": ["correlated_error", "opposite_distortion", "diagnostic_challenge", "non_comparable"],
+    "partner_piece_kinds": ["distortion", "fracture"],
+    "constructive_task": "比较两条已经完成法医诊断的思考阴影：核对错误发生在信息、假设、推理桥还是结论外推，判断它们是同一机制、相反方向，还是只有表面相似。",
+    "proof_obligations": ["指出两条思考链各自在什么步骤发生了什么错误", "相关错误必须说明共同生成机制，不能只凭结论相同", "相反扭曲必须说明偏离方向，不能把事实分歧冒充偏差方向"],
+    "forbidden_inferences": ["不能因为使用同一经典透镜就判为相关错误", "不能从两个相反错误计算真相中点或概率", "不能让经典机制名称替代具体链条证据"],
+    "priority": 10
+  },
+  {
+    "id": "heuristic_counterweight",
+    "lens_ids": ["bias_heuristics"],
+    "trigger_piece_kinds": ["distortion", "assumption", "retained_local"],
+    "candidate_relation_types": ["opposite_distortion", "shared_assumption", "conditional_complement", "diagnostic_challenge"],
+    "partner_piece_kinds": ["distortion", "assumption", "evidence_claim", "retained_local"],
+    "constructive_task": "寻找使用不同基准、样本或可得线索的材料，检验当前判断是否被单一启发式锁住。",
+    "proof_obligations": ["指出具体启发式怎样改变注意或权重", "区分对立偏差与真实事实冲突", "保留未校准的偏差幅度"],
+    "forbidden_inferences": ["不能把偏差方向当成现实修正量", "不能把反直觉观点自动当真"],
+    "priority": 8
+  },
+  {
+    "id": "ecology_boundary_match",
+    "lens_ids": ["ecological_rationality"],
+    "trigger_piece_kinds": ["distortion", "fracture", "retained_local", "assumption"],
+    "candidate_relation_types": ["scope_refinement", "conditional_complement", "non_comparable", "blind_spot_fill"],
+    "partner_piece_kinds": ["evidence_claim", "retained_local", "observed_claim", "blind_spot_candidate"],
+    "constructive_task": "寻找经验规则赖以成立的环境条件，并检查另一块材料是否描述了环境变化、边界或失配。",
+    "proof_obligations": ["说明原经验在哪个环境有效", "证明新环境改变了关键反馈或约束", "把适应性经验和机械外推分开"],
+    "forbidden_inferences": ["不能把专家经验一律贬为偏见", "不能把环境变化自动写成结论反转"],
+    "priority": 8
+  },
+  {
+    "id": "expert_domain_boundary",
+    "lens_ids": ["expert_failure"],
+    "trigger_piece_kinds": ["distortion", "fracture", "retained_local"],
+    "candidate_relation_types": ["scope_refinement", "blind_spot_fill", "diagnostic_challenge", "conditional_complement"],
+    "partner_piece_kinds": ["evidence_claim", "retained_local", "observed_claim", "blind_spot_candidate"],
+    "constructive_task": "寻找域外执行、制度、反馈或受影响者材料，检查专业判断在哪个边界之后开始失真。",
+    "proof_obligations": ["先保留专家在域内看对的部分", "明确指出跨越的专业边界", "域外材料必须与本题结果链有关"],
+    "forbidden_inferences": ["不能因一次域外越界否定全部专业能力", "不能让非专家身份替代证据"],
+    "priority": 8
+  },
+  {
+    "id": "noise_alignment",
+    "lens_ids": ["noise"],
+    "trigger_piece_kinds": ["distortion", "observed_claim", "evidence_claim"],
+    "candidate_relation_types": ["apparent_conflict", "direct_conflict", "non_comparable", "scope_refinement"],
+    "partner_piece_kinds": ["observed_claim", "evidence_claim", "retained_local"],
+    "constructive_task": "把相反判断对齐到同一时间、样本、测量工具和口径，判断分歧来自噪声、测量差异还是真实冲突。",
+    "proof_obligations": ["至少对齐时间与测量口径", "说明哪些差异仍未被解释", "一次判断差异不能证明稳定噪声"],
+    "forbidden_inferences": ["不能把所有分歧都消解成噪声", "不能用平均意见替代校准"],
+    "priority": 9
+  },
+  {
+    "id": "paradigm_translation",
+    "lens_ids": ["paradigm"],
+    "trigger_piece_kinds": ["assumption", "distortion", "observed_claim", "value_condition"],
+    "candidate_relation_types": ["definition_branch", "non_comparable", "apparent_conflict", "shared_assumption"],
+    "partner_piece_kinds": ["assumption", "observed_claim", "value_condition", "evidence_claim"],
+    "constructive_task": "显式翻译双方的问题定义、可接受证据和成功标准，判断结论是否实际上属于不同范式。",
+    "proof_obligations": ["列出双方具体定义或证据标准", "判断翻译后是否仍然冲突", "共同术语不能被假定为共同含义"],
+    "forbidden_inferences": ["不能把事实冲突一律说成各有道理", "不能以范式差异逃避可核验事实"],
+    "priority": 9
+  },
+  {
+    "id": "social_lineage_probe",
+    "lens_ids": ["social_influence"],
+    "trigger_piece_kinds": ["distortion", "evidence_claim", "assumption", "blind_spot_candidate"],
+    "candidate_relation_types": ["shared_source", "correlated_error", "blind_spot_fill", "diagnostic_challenge"],
+    "partner_piece_kinds": ["evidence_claim", "distortion", "blind_spot_candidate", "retained_local"],
+    "constructive_task": "沿来源身份、转述链和群体信任寻找同源复制或被排斥的相关材料。",
+    "proof_obligations": ["区分来源声望与方法质量", "追踪到底层证据家族而非搜索引擎", "低声量来源仍需质量审查"],
+    "forbidden_inferences": ["不能把主流来源自动降权", "不能把边缘来源自动升级为真相"],
+    "priority": 9
+  },
+  {
+    "id": "interpreter_exit_test",
+    "lens_ids": ["interpreter"],
+    "trigger_piece_kinds": ["distortion", "assumption", "fracture"],
+    "candidate_relation_types": ["shared_assumption", "correlated_error", "diagnostic_challenge", "conditional_complement"],
+    "partner_piece_kinds": ["assumption", "distortion", "evidence_claim", "retained_local"],
+    "constructive_task": "寻找能够打开封闭叙事退出条件的材料，检查不同数字人是否用同一种故事吸收了反证。",
+    "proof_obligations": ["指出反证怎样被重新解释而非真正处理", "给出可撤销故事的观察条件", "区分身份维护与普通解释选择"],
+    "forbidden_inferences": ["不能因故事连贯就判定它虚假", "不能用动机猜测代替链条证据"],
+    "priority": 7
+  },
+  {
+    "id": "emotion_value_separation",
+    "lens_ids": ["emotion_reason"],
+    "trigger_piece_kinds": ["value_condition", "distortion", "observed_claim"],
+    "candidate_relation_types": ["value_branch", "conditional_complement", "apparent_conflict", "diagnostic_challenge"],
+    "partner_piece_kinds": ["value_condition", "evidence_claim", "observed_claim", "retained_local"],
+    "constructive_task": "把后果严重性、道德权重和发生概率拆开，寻找分别回答这三个部分的材料。",
+    "proof_obligations": ["明确区分事实判断与价值权重", "严重后果不能替代发生概率", "价值分支必须真实影响决策而非只在措辞中出现"],
+    "forbidden_inferences": ["不能把情绪当成无价值噪声", "不能用价值中立掩盖真实取舍"],
+    "priority": 8
+  }
+]

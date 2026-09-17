@@ -1,0 +1,30 @@
+{
+  "schema": "bme.cross-domain-acceptance-manifest.v1",
+  "rule": "候选链必须逐案通过六维机器门槛、十分钟冷启动门槛和盲序内容复核，三案全部通过后才允许切换默认。",
+  "cases": [
+    {
+      "case_id": "ai-consciousness",
+      "domain": "前沿科学与伦理",
+      "question": "AI 会不会产生意识",
+      "baseline_run": "runs/20260724-191147-280353-standard-958612",
+      "candidate_run": null,
+      "semantic_review": null
+    },
+    {
+      "case_id": "us-ai-bubble",
+      "domain": "金融市场与前瞻风险",
+      "question": "美股AI泡沫会不会很快破灭",
+      "baseline_run": "runs/20260725-115057-504851-standard-509a49",
+      "candidate_run": null,
+      "semantic_review": null
+    },
+    {
+      "case_id": "korea-stock-crash",
+      "domain": "宏观经济与政策",
+      "question": "韩国股市会不会崩盘",
+      "baseline_run": "runs/20260725-232307-673115-standard-f36969",
+      "candidate_run": null,
+      "semantic_review": null
+    }
+  ]
+}

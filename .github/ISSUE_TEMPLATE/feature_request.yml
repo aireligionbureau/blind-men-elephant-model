@@ -1,0 +1,26 @@
+name: Feature request
+description: 提议新的能力、诊断机制或交互改进
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 哪类复杂问题或哪段工作流目前没有被满足？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案
+      description: 请说明它如何增强能力，以及如何避免增加无必要的耗时与复杂度。
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: 不回归要求
+      description: 哪些已有能力、证据链或质量门槛不能被削弱？
+    validations:
+      required: true

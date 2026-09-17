@@ -1,0 +1,22 @@
+{
+  "name": "盲人摸象模型",
+  "short_name": "盲人摸象",
+  "description": "透过人群思考的阴影，得到复杂真相的轮廓。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111311",
+  "theme_color": "#111311",
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

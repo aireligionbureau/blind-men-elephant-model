@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111311">
+  <title>盲人摸象模型</title>
+  <link rel="icon" href="./assets/blind-men-elephant-model.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <button class="model-settings-trigger" id="modelSettingsTrigger" type="button" hidden>
+    模型设置
+  </button>
+
+  <section class="setup-overlay" id="setupOverlay" aria-hidden="true" hidden>
+    <div class="setup-dialog" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+      <p class="setup-kicker" id="setupKicker">首次使用</p>
+      <h1 id="setupTitle">连接你的大模型</h1>
+      <p class="setup-intro">密钥只保存在这台电脑。</p>
+
+      <form class="setup-form" id="setupForm">
+        <label for="providerPreset">模型服务</label>
+        <select class="setup-control" id="providerPreset" name="providerPreset">
+          <option value="deepseek">DeepSeek</option>
+          <option value="openai">OpenAI</option>
+          <option value="openai-compatible">其他兼容接口</option>
+        </select>
+
+        <div class="provider-url-field" id="baseUrlField" hidden>
+          <label for="baseUrlInput">接口地址</label>
+          <input class="setup-control" id="baseUrlInput" name="baseUrl" type="url" autocomplete="off" placeholder="https://.../v1">
+        </div>
+
+        <label for="modelInput">主模型</label>
+        <input class="setup-control" id="modelInput" name="model" type="text" autocomplete="off" list="modelSuggestions" required>
+        <datalist id="modelSuggestions"></datalist>
+
+        <label for="apiKeyInput">API Key</label>
+        <div class="api-key-row">
+          <input
+            id="apiKeyInput"
+            name="apiKey"
+            type="password"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="输入所选接口的 API Key"
+          >
+          <button id="toggleApiKey" type="button" aria-pressed="false">显示</button>
+        </div>
+        <p class="saved-key-hint" id="savedKeyHint"></p>
+
+        <details class="advanced-settings" id="advancedSettings">
+          <summary>高级设置</summary>
+          <div class="advanced-fields">
+            <label for="cohortModelInput">数字人生成模型</label>
+            <input id="cohortModelInput" name="cohortModel" type="text" autocomplete="off" list="modelSuggestions">
+
+            <label class="thinking-toggle" for="thinkingInput">
+              <input id="thinkingInput" name="supportsThinking" type="checkbox">
+              <span>发送 DeepSeek 风格思考参数</span>
+            </label>
+          </div>
+        </details>
+
+        <p class="setup-status" id="setupStatus" aria-live="polite"></p>
+        <div class="setup-actions">
+          <button class="setup-cancel" id="setupCancel" type="button" hidden>取消</button>
+          <button class="setup-submit" id="setupSubmit" type="submit">验证并开始</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <main class="home-shell" aria-label="盲人摸象模型首页">
+    <section class="image-stage" id="imageStage" aria-label="输入复杂问题">
+      <button class="story-trigger" id="storyTrigger" type="button" aria-label="输入想问的问题">
+        <img src="./assets/blind-men-elephant-story.png" alt="盲人摸象成语故事">
+        <span class="image-vignette" aria-hidden="true"></span>
+      </button>
+
+      <form class="question-layer" id="questionForm" aria-label="复杂问题输入">
+        <label class="visually-hidden" for="questionInput">输入想问的问题</label>
+        <input
+          id="questionInput"
+          name="question"
+          type="text"
+          autocomplete="off"
+          placeholder="输入一个复杂问题"
+          disabled
+        >
+        <div class="person-tray" id="personTray" aria-live="polite"></div>
+        <div class="run-state" id="runState" aria-live="polite"></div>
+        <button class="resume-run" id="resumeRun" type="button" hidden>继续运行</button>
+      </form>
+    </section>
+
+    <section class="text-stage" aria-label="模型说明">
+      <p>
+        “几个盲人摸大象。有人摸到象腿，说大象像柱子；有人摸到象鼻，说大象像蛇；有人摸到象耳，说大象像扇子；有人摸到象尾，说大象像绳子。他们都只摸到一部分，却以为自己知道了全部。
+      </p>
+      <p>
+        世界是一个复杂系统。每个人面对复杂问题，就像盲人摸象，都存在局限、盲区、偏见，无法看见完整的真相。局限、盲区、偏见不是废料，是拼图的材料。盲人摸象模型，通过测绘人群思考的阴影部分，拼出模糊又接近真相的全局轮廓。”
+      </p>
+    </section>
+  </main>
+
+  <section class="transition" id="transition" aria-hidden="true">
+    <div class="transition-scene" id="transitionScene">
+      <p class="transition-question" id="transitionQuestion"></p>
+
+      <div class="transition-people" id="transitionPeople" aria-hidden="true"></div>
+
+      <div class="puzzle-viewport" id="puzzleViewport" aria-hidden="true">
+        <svg
+          class="puzzle-svg"
+          id="puzzleSvg"
+          viewBox="0 0 1200 720"
+          role="presentation"
+          focusable="false"
+        >
+          <defs>
+            <clipPath id="elephantClip" clipPathUnits="userSpaceOnUse">
+              <path d="M300 286C350 205 520 176 690 218C770 238 826 279 842 346C858 414 826 480 760 510C684 544 560 536 444 519C365 508 307 459 286 392C270 343 275 315 300 286Z" />
+              <path d="M790 274C848 236 930 257 966 318C998 372 977 433 929 459C884 483 823 464 796 419C770 376 761 313 790 274Z" />
+              <path d="M818 290C760 283 739 343 765 399C786 443 834 433 856 390C877 347 866 309 818 290Z" />
+              <path d="M925 385C960 395 971 426 964 463C957 503 943 549 966 577C982 596 1013 585 1020 557C1029 584 1017 615 990 627C956 640 923 620 914 587C904 551 920 509 923 474C927 437 910 421 900 411Z" />
+              <path d="M337 458C362 468 391 475 421 479L415 594C397 607 369 607 350 592Z" />
+              <path d="M475 492C501 497 528 501 555 503L550 608C531 620 503 618 484 602Z" />
+              <path d="M650 498C680 495 709 488 734 479L729 599C711 614 681 614 662 598Z" />
+              <path d="M742 461C769 447 790 426 805 402L813 574C795 590 766 592 746 577Z" />
+              <path d="M302 306C274 311 249 332 230 363C220 379 211 388 196 391" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round" />
+              <circle cx="191" cy="393" r="14" />
+            </clipPath>
+            <filter id="pieceRoughness" x="-12%" y="-12%" width="124%" height="124%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <filter id="voidDepth" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#050606" flood-opacity=".38" />
+            </filter>
+          </defs>
+
+          <g class="puzzle-world" id="puzzleWorld">
+            <g class="shadow-traces" id="shadowTraces"></g>
+            <g class="puzzle-pieces" id="puzzlePieces"></g>
+            <g class="elephant-details" id="elephantDetails">
+              <path class="elephant-outline" d="M196 391C218 390 221 370 238 346C256 321 276 309 300 306C322 236 459 188 621 207C712 218 779 249 808 287C860 246 930 263 963 319C981 351 981 383 966 412C963 431 967 449 963 472C957 508 943 549 966 577C982 596 1013 585 1020 557C1029 584 1017 615 990 627C956 640 923 620 914 587C904 551 920 509 923 474C927 437 910 421 900 411C883 447 852 466 813 467L813 574C795 590 766 592 746 577L742 461C739 468 736 474 734 479L729 599C711 614 681 614 662 598L650 498C619 505 585 508 555 503L550 608C531 620 503 618 484 602L475 492C456 489 438 485 421 479L415 594C397 607 369 607 350 592L337 458C305 431 286 395 282 356C279 335 285 314 300 286" />
+              <path class="elephant-ear" d="M816 292C768 292 752 340 770 389C786 430 825 431 847 392C867 356 858 313 816 292Z" />
+              <path class="elephant-eye" d="M907 322l1 0" />
+              <path class="elephant-tusk" d="M930 402C954 417 966 438 963 462" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="transition-status" aria-live="polite">
+        <p class="transition-kicker" id="transitionKicker">24 种认知位置已经到场</p>
+        <h1 id="transitionTitle">每个人正在交出自己的碎片</h1>
+        <p class="transition-copy" id="transitionCopy">他们从不同位置出发，也带着各自的信息过滤器。</p>
+        <p class="transition-count" id="transitionCount"></p>
+        <a class="report-link" id="reportLink" href="#" hidden>进入真相轮廓</a>
+        <button class="transition-resume" id="transitionResume" type="button" hidden>从保存处继续</button>
+      </div>
+
+      <div class="phase-track" id="phaseTrack" aria-label="元模型工作进度">
+        <span class="phase-step" data-step="forensic"><i></i>逐个看清</span>
+        <span class="phase-step" data-step="detective"><i></i>连接彼此</span>
+        <span class="phase-step" data-step="contour"><i></i>拼出轮廓</span>
+      </div>
+    </div>
+  </section>
+
+  <script src="./app.js?v=20260917-model-choice-v20"></script>
+</body>
+</html>

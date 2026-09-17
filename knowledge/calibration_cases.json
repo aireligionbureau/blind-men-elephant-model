@@ -1,0 +1,56 @@
+[
+  {
+    "id": "case_noise_not_paradigm",
+    "title": "相似判断者给出散乱预测",
+    "scenario": "五个认知身份证相近的数字人使用相近证据预测同一政策效果，结论方向上下漂移，但没有稳定价值、身份或框架边界。",
+    "expected_primary_lenses": ["noise"],
+    "expected_confusions": ["paradigm", "bias_heuristics"],
+    "calibration_questions": ["差异是否沿范式稳定聚类？", "重采样后是否仍然散乱？", "是否应输出误差棒而不是深层解释？"],
+    "failure_mode": "把随机分散包装成范式冲突，制造假深刻。"
+  },
+  {
+    "id": "case_emotion_not_availability_only",
+    "title": "受影响者叙事被效率模型忽略",
+    "scenario": "技术部署问题中，多个效率导向数字人忽略工人访谈和尊严损伤，只保留成本、速度和事故率指标。",
+    "expected_primary_lenses": ["emotion_reason", "ecological_rationality"],
+    "expected_confusions": ["bias_heuristics", "argument_forensics"],
+    "calibration_questions": ["叙事承载的是概率估计，还是价值成本？", "被忽略的是生动个案，还是指标无法捕捉的人类处境？"],
+    "failure_mode": "把所有情绪性材料降权为可得性偏差，丢掉真实人类成本。"
+  },
+  {
+    "id": "case_expert_overreach",
+    "title": "专家用单一理论解释开放系统",
+    "scenario": "强专业数字人用本领域模型解释公共治理、劳动市场、伦理风险和长期政治反馈，并给出高置信预测。",
+    "expected_primary_lenses": ["expert_failure", "argument_forensics"],
+    "expected_confusions": ["paradigm", "ecological_rationality"],
+    "calibration_questions": ["哪些判断在域内，哪些是跨域外推？", "有没有失败条件和校准期限？", "是否需要狐狸型对照？"],
+    "failure_mode": "被专家话语密度迷惑，把跨域外推当作局部高清。"
+  },
+  {
+    "id": "case_paradigm_not_argument_only",
+    "title": "双方使用同一词但世界模型不同",
+    "scenario": "数字人都讨论“安全”，但一方指事故率，一方指社会韧性，一方指个人自由免受控制。补充事实后仍无法收敛。",
+    "expected_primary_lenses": ["paradigm"],
+    "expected_confusions": ["argument_forensics", "social_influence"],
+    "calibration_questions": ["定义清楚后分歧是否消失？", "他们共享成功标准吗？", "是否需要多候选轮廓而不是平均？"],
+    "failure_mode": "把不可通约冲突压成概念不清，导致错误综合。"
+  },
+  {
+    "id": "case_ecology_not_bias_only",
+    "title": "一线简单规则与抽象模型冲突",
+    "scenario": "地方实践者数字人使用简单排除规则，被技术数字人视为保守偏见，但该规则来自多年高反馈环境。",
+    "expected_primary_lenses": ["ecological_rationality"],
+    "expected_confusions": ["bias_heuristics", "expert_failure"],
+    "calibration_questions": ["规则从什么环境长出来？", "当前环境是否已经变化？", "它是局部锚点还是跨域错配？"],
+    "failure_mode": "过度理性主义地消灭实践智慧，或浪漫化旧规则。"
+  },
+  {
+    "id": "case_local_whole_overreach",
+    "title": "局部高清被说成整体真相",
+    "scenario": "一个数字人只采信了少量个案、类比、模型先验或单一证据类型，却给出整体、长期、系统性或高确定性判断。",
+    "expected_primary_lenses": ["argument_forensics", "bias_heuristics"],
+    "expected_confusions": ["expert_failure", "ecological_rationality", "noise"],
+    "calibration_questions": ["证据实际支持到哪一步？", "结论越到了哪里？", "删掉越界后保留什么局部材料？", "还缺哪些反证、维度或外部核验才能补桥？"],
+    "failure_mode": "被局部精确迷惑，把碎片当全象；或因为越界而全盘否定有用局部。"
+  }
+]

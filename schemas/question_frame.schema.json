@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/question_frame.schema.json",
+  "title": "QuestionFrame",
+  "type": "object",
+  "required": [
+    "exact_question",
+    "normalized_question",
+    "judgment_target",
+    "question_types",
+    "primary_question_type",
+    "scope",
+    "relevant_evidence_dimensions",
+    "reasoning_grammar",
+    "one_pass_coverage"
+  ],
+  "properties": {
+    "exact_question": { "type": "string", "minLength": 1 },
+    "normalized_question": { "type": "string", "minLength": 1 },
+    "judgment_target": { "type": "string", "minLength": 1 },
+    "question_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["fact", "causal", "prediction", "normative", "conceptual", "strategic"]
+      }
+    },
+    "primary_question_type": {
+      "type": "string",
+      "enum": ["fact", "causal", "prediction", "normative", "conceptual", "strategic"]
+    },
+    "scope": { "type": "object" },
+    "relevant_evidence_dimensions": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "type": "string" }
+    },
+    "reasoning_grammar": {
+      "type": "object",
+      "required": ["proof_obligations", "answer_form", "adds_model_calls", "adds_pipeline_stages"],
+      "properties": {
+        "proof_obligations": { "type": "array", "items": { "type": "string" } },
+        "answer_form": { "type": "string" },
+        "adds_model_calls": { "const": false },
+        "adds_pipeline_stages": { "const": false }
+      }
+    },
+    "one_pass_coverage": {
+      "type": "object",
+      "required": ["coverage_targets", "automatic_second_round", "remaining_gaps_become_explicit_unknowns"],
+      "properties": {
+        "coverage_targets": { "type": "array", "items": { "type": "string" } },
+        "automatic_second_round": { "const": false },
+        "remaining_gaps_become_explicit_unknowns": { "const": true }
+      }
+    }
+  }
+}

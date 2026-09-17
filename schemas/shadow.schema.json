@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/shadow.schema.json",
+  "title": "Shadow",
+  "type": "object",
+  "required": ["id", "person_id", "shadow_type", "description", "source_stage", "attribution", "puzzle_use"],
+  "properties": {
+    "id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "shadow_type": {
+      "type": "string",
+      "enum": ["missing", "distorted", "informational", "framing", "value", "reasoning", "silence"]
+    },
+    "description": { "type": "string" },
+    "source_stage": {
+      "type": "string",
+      "enum": ["information_filter", "evidence_selection", "assumption", "reasoning", "value_evaluation", "conclusion"]
+    },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "likely_causes": { "type": "array", "items": { "type": "string" } },
+        "related_parameters": { "type": "array", "items": { "type": "string" } },
+        "classic_lenses": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "estimated_bias_vector": {
+      "type": "object",
+      "properties": {
+        "direction": { "type": "string" },
+        "strength": { "type": "string" },
+        "uncertainty": { "type": "string" }
+      }
+    },
+    "puzzle_use": {
+      "type": "string",
+      "enum": ["anchor", "constraint_band", "negative_space", "downweight", "fracture_boundary", "unknown"]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/run_config.schema.json",
+  "title": "RunConfig",
+  "type": "object",
+  "required": ["question", "person_count", "search_enabled", "classic_lenses"],
+  "properties": {
+    "question": { "type": "string" },
+    "person_count": { "type": "integer", "minimum": 3 },
+    "search_enabled": { "type": "boolean" },
+    "classic_lenses": { "type": "array", "items": { "type": "string" } },
+    "domains_to_cover": { "type": "array", "items": { "type": "string" } },
+    "search_provider": {
+      "type": "string",
+      "enum": ["mock", "google", "baidu-html", "baidu-json", "auto-cn", "auto-global"]
+    },
+    "search_region": {
+      "type": "string",
+      "enum": ["cn", "global"]
+    }
+  }
+}

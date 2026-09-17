@@ -1,0 +1,90 @@
+[
+  {
+    "stage": "problem_framing",
+    "touch_target": "数字人如何把用户问题翻译成自己的问题",
+    "what_to_inspect": ["关键词替换", "问题边界", "默认目标", "缺席变量"],
+    "shadow_questions": ["它实际回答的是原问题吗？", "它把什么排除在问题外？"],
+    "evidence_needed": ["search_strategy", "core_assumptions", "cognitive_frames"],
+    "failure_if_skipped": "元模型会在错误问题上诊断得很精细。"
+  },
+  {
+    "stage": "information_filter",
+    "touch_target": "信息进入视野之前的过滤器",
+    "what_to_inspect": ["trusted_sources", "distrusted_sources", "preferred_evidence", "ignored_evidence"],
+    "shadow_questions": ["哪些证据没有机会进入？", "过滤器是质量判断还是身份/价值判断？"],
+    "evidence_needed": ["information_filter", "query_plan", "ignored_sources"],
+    "failure_if_skipped": "看不到入口前盲区，只会分析已出现材料。"
+  },
+  {
+    "stage": "evidence_selection",
+    "touch_target": "候选来源如何被采信、拒绝或忽略",
+    "what_to_inspect": ["accepted_sources", "rejected_sources", "ignored_sources", "trust_reason"],
+    "shadow_questions": ["采信标准是否一致？", "被拒材料代表什么变量？"],
+    "evidence_needed": ["source_decisions", "evidence_ledger"],
+    "failure_if_skipped": "无法区分证据不足、来源偏见和合理过滤。"
+  },
+  {
+    "stage": "assumption",
+    "touch_target": "支撑推理的显性和隐性前提",
+    "what_to_inspect": ["core_assumptions", "unstated premises", "problem definitions"],
+    "shadow_questions": ["哪个前提一错，结论就塌？", "前提来自证据还是身份？"],
+    "evidence_needed": ["core_assumptions", "reasoning_path", "person values"],
+    "failure_if_skipped": "推理链看似合理，但地基可能未审。"
+  },
+  {
+    "stage": "reasoning",
+    "touch_target": "证据到结论的桥梁",
+    "what_to_inspect": ["因果桥", "尺度转换", "类比", "反例处理"],
+    "shadow_questions": ["证据实际支持到哪一步？", "哪里发生跨尺度或因果跳跃？"],
+    "evidence_needed": ["entries", "reasoning_path", "what_would_change_my_mind"],
+    "failure_if_skipped": "局部高清会伪装成整体真相。"
+  },
+  {
+    "stage": "local_whole_boundary",
+    "touch_target": "局部材料是否越界伪装成整体真相",
+    "what_to_inspect": ["evidence_floor", "conclusion_ceiling", "scale bridge", "time bridge", "sample bridge", "verification bridge"],
+    "shadow_questions": ["这个数字人摸到的局部是什么？", "它把局部推成了什么整体结论？", "删掉越界后还剩什么可用材料？"],
+    "evidence_needed": ["entries", "source_types", "evidence_types", "retrieval_layers", "conclusion", "confidence"],
+    "failure_if_skipped": "元模型会把局部精确误当互锁锚点，拼出假轮廓。"
+  },
+  {
+    "stage": "value_evaluation",
+    "touch_target": "事实如何被价值和情绪赋权",
+    "what_to_inspect": ["top_value", "temperament", "human costs", "tradeoffs"],
+    "shadow_questions": ["哪个价值在放大事实？", "哪个价值被压低？", "情绪是信号还是放大器？"],
+    "evidence_needed": ["values", "temperament", "ignored qualitative evidence"],
+    "failure_if_skipped": "元模型会把价值分歧误诊成事实错误。"
+  },
+  {
+    "stage": "conclusion",
+    "touch_target": "结论强度与证据链是否匹配",
+    "what_to_inspect": ["confidence", "conclusion scope", "failure conditions", "uncertainty"],
+    "shadow_questions": ["结论是否越过证据边界？", "置信度是否校准？"],
+    "evidence_needed": ["conclusion", "confidence", "ledger size", "counterexamples"],
+    "failure_if_skipped": "无法发现过度自信和事后包装。"
+  },
+  {
+    "stage": "cross_person_comparison",
+    "touch_target": "人群之间的分歧结构和共同沉默",
+    "what_to_inspect": ["value clusters", "frame clusters", "shared ignored evidence", "same evidence different meaning"],
+    "shadow_questions": ["分歧沿什么结构聚类？", "所有人共同没摸到什么？"],
+    "evidence_needed": ["all personas", "all ledgers", "disagreement_scan"],
+    "failure_if_skipped": "只能看到个体阴影，看不到群体地形。"
+  },
+  {
+    "stage": "differential_diagnosis",
+    "touch_target": "容易混淆的透镜之间如何裁决",
+    "what_to_inspect": ["bias vs noise", "bias vs ecology", "argument vs paradigm", "emotion vs availability"],
+    "shadow_questions": ["为什么是这个透镜而不是另一个？", "是否允许共存？"],
+    "evidence_needed": ["lens_conflict_rules", "micro_lens_candidates", "calibration_cases"],
+    "failure_if_skipped": "元模型会变成标签机。"
+  },
+  {
+    "stage": "meta_audit",
+    "touch_target": "元模型自己的偏好和误诊风险",
+    "what_to_inspect": ["overdiagnosis", "rationalism bias", "preference for structure", "ignored nonformal knowledge"],
+    "shadow_questions": ["元模型是否过度诊断？", "是否低估不可形式化材料？"],
+    "evidence_needed": ["misdiagnosis_audit", "meta_reflection", "calibration_reminders"],
+    "failure_if_skipped": "元模型会把自己的制图语言误当中性真相。"
+  }
+]

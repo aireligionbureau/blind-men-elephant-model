@@ -1,0 +1,112 @@
+[
+  {
+    "id": "bias_vs_noise",
+    "competing_lenses": ["bias_heuristics", "noise"],
+    "confusion_pattern": "判断分散既可能来自稳定偏差，也可能只是无规律噪声。",
+    "decision_questions": ["差异是否有稳定方向？", "相似 persona 重复判断是否仍然分散？", "能否被价值、信息源或框架解释？"],
+    "prefer_first_when": ["差异方向与价值权重、风险态度或信息过滤稳定同向。", "不同证据下仍出现同一方向扭曲。"],
+    "prefer_second_when": ["差异无稳定方向。", "相近 persona、相近账本仍产生随机分散。"],
+    "coexist_when": ["整体方向有偏，但围绕该方向还有明显随机波动。"],
+    "misdiagnosis_risk": "把噪声误判为偏差会制造伪反演；把偏差误判为噪声会抹掉有价值的方向信号。"
+  },
+  {
+    "id": "bias_vs_ecology",
+    "competing_lenses": ["bias_heuristics", "ecological_rationality"],
+    "confusion_pattern": "启发式可能是偏差，也可能是环境适配的快速规则。",
+    "decision_questions": ["该规则来自什么反馈环境？", "当前环境是否与原环境结构相同？", "规则是否跨域迁移？"],
+    "prefer_first_when": ["启发式忽略基准率、样本和反例，且没有可靠反馈历史。", "规则被用到明显不同的新环境。"],
+    "prefer_second_when": ["规则来自长期反馈充分的一线环境。", "复杂模型噪声高，而简单规则表现稳定。"],
+    "coexist_when": ["规则在局部环境适配，但被外推到整体问题。"],
+    "misdiagnosis_risk": "过度偏差化会消灭实践智慧；过度生态化会浪漫化错误直觉。"
+  },
+  {
+    "id": "argument_vs_paradigm",
+    "competing_lenses": ["argument_forensics", "paradigm"],
+    "confusion_pattern": "概念不清可能是普通论证问题，也可能是范式不可通约。",
+    "decision_questions": ["定义清楚后分歧是否缓解？", "双方证据标准是否一致？", "一方核心变量在另一方语言里是否不存在？"],
+    "prefer_first_when": ["补定义、补前提或补证据后冲突可解决。", "双方仍共享同一成功标准。"],
+    "prefer_second_when": ["事实补充后仍不收敛。", "问题定义、价值标准和核心变量都不同。"],
+    "coexist_when": ["范式冲突中夹杂具体论证漏洞。"],
+    "misdiagnosis_risk": "把普通漏洞升级为范式冲突会逃避审计；把范式冲突压成漏洞会误伤深层分歧。"
+  },
+  {
+    "id": "interpreter_vs_argument",
+    "competing_lenses": ["interpreter", "argument_forensics"],
+    "confusion_pattern": "一条推理链薄弱，可能是论证能力不足，也可能是事后合理化包装。",
+    "decision_questions": ["结论是否先于证据稳定存在？", "若删掉理由，结论会改变吗？", "反例处理是缺失还是被主动重写？"],
+    "prefer_first_when": ["结论与身份/价值高度同向，且改变条件不可触发。", "所有证据都被编入同一故事。"],
+    "prefer_second_when": ["问题主要是前提、证据或因果桥缺失。", "数字人表现出真实不确定和可修正性。"],
+    "coexist_when": ["事后叙事同时包含可定位的推理断裂。"],
+    "misdiagnosis_risk": "只做论证审计可能低估动机性包装；只做解释器诊断可能过度心理化。"
+  },
+  {
+    "id": "social_vs_expert",
+    "competing_lenses": ["social_influence", "expert_failure"],
+    "confusion_pattern": "信任权威来源可能是社会影响，也可能是专业质量判断。",
+    "decision_questions": ["信任来自地位还是方法质量？", "该领域反馈是否充分？", "域外证据是否被公平处理？"],
+    "prefer_first_when": ["采信理由主要是权威、主流、身份亲近。", "方法质量未被检查。"],
+    "prefer_second_when": ["来源在稳定反馈领域有专业记录。", "问题主要是专家跨域外推或刺猬型理论。"],
+    "coexist_when": ["专家权威既有真实质量，也制造同温层排斥。"],
+    "misdiagnosis_risk": "反权威会低估专业知识；崇拜专家会遮蔽社会地位效应。"
+  },
+  {
+    "id": "emotion_vs_availability",
+    "competing_lenses": ["emotion_reason", "bias_heuristics"],
+    "confusion_pattern": "生动伤害叙事既可能是情绪价值信号，也可能是可得性放大。",
+    "decision_questions": ["叙事揭示了真实成本还是只放大了概率？", "有没有基准率和规模校准？", "如果去掉情绪语言，价值损失是否仍成立？"],
+    "prefer_first_when": ["材料承载尊严、身体性、恐惧或道德伤害。", "量化指标遗漏人类处境。"],
+    "prefer_second_when": ["极端个案替代总体概率。", "情绪显著性导致规模误判。"],
+    "coexist_when": ["个案既揭示真实伤害类型，也不能代表发生频率。"],
+    "misdiagnosis_risk": "把情绪全当偏差会失去人类成本；把情绪全当真相会失去概率校准。"
+  },
+  {
+    "id": "paradigm_vs_social",
+    "competing_lenses": ["paradigm", "social_influence"],
+    "confusion_pattern": "群体分歧既可能来自身份利益，也可能来自不同范式。",
+    "decision_questions": ["如果去掉身份利益，问题定义是否仍不同？", "双方证据标准是否不同？", "群体边界是否等同于范式边界？"],
+    "prefer_first_when": ["冲突主要在问题定义、核心变量和成功标准。", "跨身份者也会落入同一范式分歧。"],
+    "prefer_second_when": ["信任与排斥明显沿身份、组织或阶层边界分布。", "证据标准本身并无深层不同。"],
+    "coexist_when": ["身份群体长期生活在不同制度环境中，形成不同范式。"],
+    "misdiagnosis_risk": "只看身份会低估认识论差异；只看范式会低估权力和利益。"
+  },
+  {
+    "id": "expert_vs_ecology",
+    "competing_lenses": ["expert_failure", "ecological_rationality"],
+    "confusion_pattern": "经验规则可能是专家隧道视野，也可能是一线生态理性。",
+    "decision_questions": ["规则来自抽象专业训练还是一线反馈？", "反馈是否及时、可靠、重复？", "规则是否跨环境外推？"],
+    "prefer_first_when": ["专业工具被外推到域外。", "反例被理论吸收而不更新。"],
+    "prefer_second_when": ["一线规则来自长期高质量反馈。", "复杂模型无法捕捉地方变量。"],
+    "coexist_when": ["专家在域内有生态适配，但跨域成为刺猬。"],
+    "misdiagnosis_risk": "低估一线知识会让元模型过度学院化；浪漫化经验会让错误规则免检。"
+  },
+  {
+    "id": "noise_vs_paradigm",
+    "competing_lenses": ["noise", "paradigm"],
+    "confusion_pattern": "结论不收敛可能是随机波动，也可能是范式不可通约。",
+    "decision_questions": ["分歧是否沿框架稳定聚类？", "相同范式内是否仍高度分散？", "补事实是否减少差异？"],
+    "prefer_first_when": ["分散不沿框架聚类。", "相同范式内仍高度不稳定。"],
+    "prefer_second_when": ["分歧稳定沿问题定义和成功标准分裂。", "各范式内部相对一致。"],
+    "coexist_when": ["范式之间有结构冲突，范式内部仍有噪声。"],
+    "misdiagnosis_risk": "把范式冲突平均化会损失结构；把噪声范式化会制造假深刻。"
+  },
+  {
+    "id": "interpreter_vs_social",
+    "competing_lenses": ["interpreter", "social_influence"],
+    "confusion_pattern": "结论维护身份，可能是内在解释器，也可能是外部社会压力。",
+    "decision_questions": ["压力来自数字人自我叙事还是外部群体归属？", "改变结论会破坏自我形象还是群体关系？"],
+    "prefer_first_when": ["推理保护的是自我一致和内在故事。", "没有明显外部来源压力。"],
+    "prefer_second_when": ["来源选择和结论沿群体边界分布。", "权威、社会认同或承诺一致线索明显。"],
+    "coexist_when": ["群体身份已内化为自我叙事。"],
+    "misdiagnosis_risk": "只看内部叙事会忽略社会结构；只看社会压力会忽略自我合理化机制。"
+  },
+  {
+    "id": "argument_overreach_vs_ecology_expert",
+    "competing_lenses": ["argument_forensics", "ecological_rationality", "expert_failure"],
+    "confusion_pattern": "局部材料推整体可能是论证越界，也可能是专家域内高清或一线生态规则的合理外推。",
+    "decision_questions": ["这个局部是否来自高质量反馈环境或真实专业域？", "跨出原环境后新增变量是否被补齐？", "删掉整体结论后是否仍有可保留锚点？"],
+    "prefer_first_when": ["证据只覆盖单一局部，却声明整体、长期或必然结论。", "缺少尺度桥、时间桥、样本桥或外部核验。"],
+    "prefer_second_when": ["判断仍停留在原专业域或高反馈环境内。", "外推边界被清楚标出，且失败条件可触发。"],
+    "coexist_when": ["数字人在域内看得很清，但跨域或跨尺度时越界。"],
+    "misdiagnosis_risk": "只做越界诊断会误杀局部智慧；只尊重专业/生态理性会放过以偏概全。"
+  }
+]

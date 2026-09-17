@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/search_result.schema.json",
+  "title": "SearchResult",
+  "type": "object",
+  "required": ["id", "query", "title", "url", "snippet", "source_name", "source_type", "evidence_type"],
+  "properties": {
+    "id": { "type": "string" },
+    "query": { "type": "string" },
+    "title": { "type": "string" },
+    "url": { "type": "string" },
+    "snippet": { "type": "string" },
+    "source_name": { "type": "string" },
+    "source_type": { "type": "string" },
+    "evidence_type": { "type": "string" }
+  }
+}

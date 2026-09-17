@@ -1,0 +1,41 @@
+name: Bug report
+description: 报告可复现的程序错误、运行中断或结果结构异常
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: 请先删除日志中的 API key、授权头和不宜公开的原始材料。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题描述
+      description: 实际发生了什么，预期应该发生什么？
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 请提供最短可复现步骤、命令和脱敏后的问题文本。
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境
+      placeholder: Windows 11, Python 3.12, commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 脱敏后的诊断信息
+      description: 可附错误栈、quality.json 摘要或运行阶段。请勿粘贴密钥。
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我已确认内容不含 API key、授权头或私人数据。
+          required: true

@@ -1,0 +1,66 @@
+{
+  "id": "expert_failure",
+  "name": "专家失效透镜",
+  "source_works": ["《专家的政治判断》"],
+  "category": "expert_judgment",
+  "core_idea": "专家的知识会带来局部高清，也会制造隧道视野。刺猬型专家用一个宏大理论解释世界，锋利、自洽、可传播，但在复杂预测中常输给多模型、可修正的狐狸型判断。",
+  "detect_signals": [
+    "数字人用一个大理论解释几乎所有证据。",
+    "专业域越强，越排斥域外证据。",
+    "对预测给出过高置信度。",
+    "把复杂问题压缩成单一因果或单一杠杆。"
+  ],
+  "diagnostic_questions": [
+    "该数字人是刺猬型还是狐狸型？",
+    "它是否把专业工具误当成世界本身？",
+    "它是否能吸收域外反证并更新判断？",
+    "它的预测有没有时间范围、失败条件和校准记录？"
+  ],
+  "shadow_types": ["framing", "reasoning", "informational"],
+  "source_stages": ["evidence_selection", "assumption", "reasoning", "conclusion"],
+  "mechanism_chain": [
+    "专业训练提高某些变量的可见度。",
+    "可见变量被误认为关键变量或全部变量。",
+    "单一理论把新证据吸收到既有框架里。",
+    "反例被解释为暂时噪声或外行误解。",
+    "阴影表现为局部高清和跨域误导并存。"
+  ],
+  "observable_markers": [
+    "expertise_strong 与 accepted_sources 高度重合。",
+    "cognitive_frames 数量少但解释范围大。",
+    "结论中出现单一主因、单一解法、单一历史类比。",
+    "confidence 高，但没有失败条件或更新机制。"
+  ],
+  "attribution_rules": [
+    "若 expertise_strong 与 accepted_sources 高度同域，且 rejected/ignored 域外来源多，标记专家隧道视野。",
+    "若 cognitive_frames 单一且结论覆盖面大，标记刺猬型风险。",
+    "若 confidence 高但反例处理弱，标记专家过度自信。",
+    "若数字人能整合多种证据并明确失败条件，标记狐狸型稳健候选。"
+  ],
+  "inversion_rules": [
+    "专业域内判断可保留为局部高清候选，但跨域结论降权。",
+    "将域外沉默转化为负空间洞边界。",
+    "用其他领域数字人对其结论做交叉定位。",
+    "狐狸型多模型重合点可提升为更强锚点候选。"
+  ],
+  "puzzle_uses": ["anchor", "constraint_band", "negative_space", "downweight"],
+  "boundary_conditions": [
+    "专家失效透镜不是反专家；它要求分离域内能力和跨域扩张。",
+    "在规则稳定、反馈充分的领域，专家判断可能很强。",
+    "在开放、政治化、长周期问题上，应降低刺猬型置信度。"
+  ],
+  "anti_misuse_rules": [
+    "不要因专家有盲区就抹掉其局部高清。",
+    "不要把外行多元观点自动当作狐狸型智慧。",
+    "不要把表达自信误判为预测能力。"
+  ],
+  "model_training_notes": [
+    "元模型要为每个数字人估计刺猬/狐狸指数。",
+    "元模型要问：这个人在哪个局部真的可能看得更清？跨出哪里就开始失真？",
+    "元模型应把专家结论拆成域内锚点和域外外推两部分。"
+  ],
+  "self_reflection": [
+    "元模型是否偏好看起来知识密度高的专家话语？",
+    "元模型是否低估外行常识或边缘经验？"
+  ]
+}

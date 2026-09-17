@@ -1,0 +1,1069 @@
+:root {
+  color-scheme: light;
+  --ink: #171b18;
+  --muted: #60665f;
+  --paper: #f2f0e8;
+  --panel: #fbfaf5;
+  --line: #d7d2c5;
+  --coal: #2c302e;
+  --moss: #55705f;
+  --clay: #9a6f48;
+  --shadow: 0 24px 70px rgba(25, 27, 24, .18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,0) 28%),
+    radial-gradient(circle at 18% 20%, rgba(85,112,95,.18), transparent 34%),
+    radial-gradient(circle at 82% 86%, rgba(154,111,72,.14), transparent 28%),
+    var(--paper);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  line-height: 1.68;
+}
+
+.model-settings-trigger {
+  position: fixed;
+  top: 22px;
+  right: 26px;
+  z-index: 30;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(44, 48, 46, .28);
+  border-radius: 6px;
+  color: var(--ink);
+  background: rgba(251, 250, 245, .9);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.model-settings-trigger:hover {
+  border-color: rgba(44, 48, 46, .52);
+  background: var(--panel);
+}
+
+.setup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(20, 23, 21, .72);
+  backdrop-filter: blur(12px);
+}
+
+.setup-overlay[hidden] {
+  display: none;
+}
+
+.setup-dialog {
+  width: min(520px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 28px 32px 24px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #fbfaf5;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .34);
+}
+
+.setup-kicker {
+  margin: 0 0 7px;
+  color: var(--moss);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.setup-dialog h1 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.setup-intro {
+  margin: 10px 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.setup-form > label,
+.provider-url-field > label,
+.advanced-fields > label:not(.thinking-toggle) {
+  display: block;
+  margin: 0 0 7px;
+  color: #3d433e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.api-key-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.api-key-row input,
+.setup-control,
+.advanced-fields input,
+.advanced-fields select {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #c9c5ba;
+  border-radius: 6px;
+  outline: 0;
+  color: var(--ink);
+  background: #fff;
+  padding: 0 13px;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.api-key-row input:focus,
+.setup-control:focus,
+.advanced-fields input:focus,
+.advanced-fields select:focus {
+  border-color: var(--moss);
+  box-shadow: 0 0 0 3px rgba(85, 112, 95, .14);
+}
+
+.api-key-row button {
+  min-width: 58px;
+  border: 1px solid #c9c5ba;
+  border-radius: 6px;
+  color: #3d433e;
+  background: #f0eee6;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.saved-key-hint {
+  min-height: 21px;
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.setup-form > .setup-control,
+.provider-url-field > .setup-control {
+  margin-bottom: 12px;
+}
+
+.advanced-settings {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.advanced-settings summary {
+  padding: 10px 0;
+  color: #4f554f;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.advanced-fields {
+  padding: 3px 0 18px;
+}
+
+.advanced-fields input,
+.advanced-fields select {
+  height: 42px;
+  margin-bottom: 14px;
+}
+
+.thinking-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #3d433e;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.thinking-toggle input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+}
+
+.setup-status {
+  min-height: 20px;
+  margin: 8px 0 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.setup-status.error {
+  color: #9a3e36;
+}
+
+.setup-status.success {
+  color: #42664f;
+}
+
+.setup-status.warning {
+  color: #805a2a;
+}
+
+.setup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.setup-actions button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.setup-cancel {
+  border: 1px solid #c9c5ba;
+  color: #3d433e;
+  background: transparent;
+}
+
+.setup-submit {
+  border: 1px solid var(--coal);
+  color: #f8f6ef;
+  background: var(--coal);
+}
+
+.setup-submit:hover {
+  background: #151816;
+}
+
+.setup-actions button:disabled,
+.api-key-row button:disabled {
+  cursor: wait;
+  opacity: .58;
+}
+
+.home-shell {
+  width: min(1120px, calc(100vw - 112px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.26fr) minmax(300px, .74fr);
+  gap: clamp(58px, 7vw, 108px);
+  align-items: center;
+  padding: clamp(72px, 10vw, 124px) 0;
+}
+
+.image-stage {
+  position: relative;
+  min-height: min(470px, 40vw);
+  border: 1px solid rgba(44, 48, 46, .2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #d8d5ca;
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+
+.story-trigger {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  cursor: text;
+  display: block;
+  background: #d8d5ca;
+}
+
+.story-trigger img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(1) contrast(.98) brightness(.96);
+  transform: scale(1.01);
+  transition: transform .7s ease, filter .7s ease, opacity .55s ease;
+}
+
+.story-trigger:hover img,
+.image-stage.asking .story-trigger img {
+  transform: scale(1.045);
+  filter: grayscale(1) contrast(1.05) brightness(.78);
+}
+
+.image-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(9, 10, 9, .16), transparent 24%, transparent 70%, rgba(9, 10, 9, .14)),
+    linear-gradient(180deg, transparent 45%, rgba(9, 10, 9, .22));
+  z-index: 1;
+}
+
+.question-layer {
+  position: absolute;
+  inset: auto clamp(18px, 4vw, 50px) clamp(20px, 4vw, 48px);
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity .38s ease, transform .38s ease;
+}
+
+.image-stage.asking .question-layer,
+.image-stage.generating .question-layer {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.question-layer input {
+  width: 100%;
+  height: clamp(58px, 7vw, 76px);
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 8px;
+  outline: 0;
+  background: rgba(251, 250, 245, .93);
+  color: var(--ink);
+  box-shadow: 0 18px 48px rgba(0,0,0,.26);
+  padding: 0 clamp(18px, 3vw, 30px);
+  font-size: clamp(18px, 2.4vw, 28px);
+  letter-spacing: 0;
+}
+
+.question-layer input::placeholder {
+  color: rgba(23, 27, 24, .48);
+}
+
+.question-layer input:disabled {
+  color: rgba(23, 27, 24, .68);
+}
+
+.person-tray {
+  min-height: 98px;
+  display: grid;
+  grid-template-columns: repeat(12, 36px);
+  grid-auto-rows: 48px;
+  gap: 8px 10px;
+  align-content: start;
+  margin-top: 18px;
+}
+
+.run-state {
+  min-height: 24px;
+  margin-top: 10px;
+  color: rgba(250, 248, 240, .92);
+  font-size: 14px;
+  line-height: 1.5;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .72);
+}
+
+.resume-run {
+  min-height: 40px;
+  margin-top: 10px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, .62);
+  border-radius: 8px;
+  color: #f7f4eb;
+  background: rgba(20, 24, 21, .62);
+  cursor: pointer;
+}
+
+.resume-run:hover {
+  background: rgba(20, 24, 21, .82);
+}
+
+.person-icon {
+  width: 36px;
+  height: 48px;
+  color: rgba(20, 22, 20, .88);
+  filter: drop-shadow(0 7px 8px rgba(0,0,0,.2));
+  opacity: 0;
+  transform: translateY(12px) scale(.84);
+  animation: personArrive .42s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.person-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.person-head,
+.person-body {
+  fill: rgba(235, 229, 213, .92);
+  stroke: currentColor;
+  stroke-width: 2.2;
+}
+
+.person-shadow,
+.person-blindfold,
+.person-neck,
+.person-fold,
+.person-arm,
+.person-cane,
+.person-foot {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.person-shadow {
+  stroke: rgba(20, 22, 20, .2);
+  stroke-width: 1.6;
+}
+
+.person-blindfold {
+  stroke-width: 2.5;
+}
+
+.person-fold {
+  stroke: rgba(20, 22, 20, .55);
+  stroke-width: 1.4;
+}
+
+.person-variant-2 {
+  transform-origin: 50% 100%;
+}
+
+.person-variant-2 .person-arm-left {
+  transform: translate(-1px, 1px) rotate(-5deg);
+  transform-origin: 18px 25px;
+}
+
+.person-variant-2 .person-cane {
+  transform: translate(-1px, 0) rotate(-5deg);
+  transform-origin: 40px 34px;
+}
+
+.person-variant-3 .person-head,
+.person-variant-3 .person-blindfold {
+  transform: translate(1px, 0);
+}
+
+.person-variant-3 .person-body {
+  transform: translate(.7px, 0);
+}
+
+.person-variant-4 .person-arm-right {
+  transform: translate(1px, -1px) rotate(4deg);
+  transform-origin: 31px 25px;
+}
+
+.person-variant-4 .person-cane {
+  transform: translate(1px, -1px) rotate(4deg);
+  transform-origin: 40px 34px;
+}
+
+@keyframes personArrive {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.text-stage {
+  align-self: center;
+  max-width: 470px;
+  font-size: clamp(15px, 1.18vw, 18px);
+  line-height: 1.82;
+}
+
+.text-stage p {
+  margin: 0;
+}
+
+.text-stage p + p {
+  margin-top: clamp(26px, 3.4vw, 42px);
+}
+
+body.puzzle-running {
+  overflow: hidden;
+}
+
+.transition {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  color: #191b1a;
+  background: #e9e7df;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .72s ease, visibility 0s linear .72s;
+}
+
+.transition.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.transition-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: inset 0 0 120px rgba(20, 22, 20, .08);
+}
+
+.transition-question {
+  position: absolute;
+  z-index: 6;
+  top: clamp(22px, 4vh, 48px);
+  left: clamp(24px, 5vw, 76px);
+  width: min(620px, calc(100vw - 250px));
+  margin: 0;
+  color: rgba(25, 27, 26, .62);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: clamp(14px, 1.35vw, 19px);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.transition-question::before {
+  content: "正在思考";
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(25, 27, 26, .4);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-size: 11px;
+}
+
+.transition-people {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.transition-person {
+  position: absolute;
+  width: 34px;
+  height: 44px;
+  color: rgba(30, 32, 30, .82);
+  filter: drop-shadow(0 5px 6px rgba(23, 25, 23, .16));
+  transform: translate(-50%, -50%) scale(.94);
+  transform-origin: center;
+  transition:
+    left 1.15s cubic-bezier(.2, .75, .2, 1),
+    top 1.15s cubic-bezier(.2, .75, .2, 1),
+    opacity .7s ease,
+    transform .7s ease,
+    filter .7s ease;
+}
+
+.transition-person svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.transition-person.offered {
+  opacity: 0;
+  filter: blur(1.5px);
+  transform: translate(-50%, -50%) scale(.66);
+}
+
+.puzzle-viewport {
+  position: absolute;
+  z-index: 2;
+  inset: clamp(72px, 9vh, 108px) 0 clamp(148px, 20vh, 210px);
+  overflow: visible;
+}
+
+.puzzle-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.puzzle-world {
+  transform-box: view-box;
+  transform-origin: center;
+  transform: scale(1.16);
+  transition: transform 2.8s cubic-bezier(.2, .72, .18, 1), opacity 1.2s ease;
+}
+
+.puzzle-piece {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translate(var(--scatter-x), var(--scatter-y)) rotate(var(--scatter-r));
+  transition:
+    transform 2.35s cubic-bezier(.22, .72, .14, 1),
+    opacity .72s ease;
+  will-change: transform, opacity;
+}
+
+.puzzle-piece > path {
+  stroke: rgba(26, 28, 26, .64);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.puzzle-piece.revealed {
+  opacity: .94;
+}
+
+.piece-seen > path {
+  fill: #f4f1e7;
+}
+
+.piece-distorted > path {
+  fill: #898b86;
+  filter: url(#pieceRoughness);
+}
+
+.piece-unseen > path {
+  fill: #191b1a;
+  stroke: #0e0f0e;
+  filter: url(#voidDepth);
+}
+
+.piece-unresolved > path {
+  fill: #a8aaa5;
+  stroke-dasharray: 3 2;
+}
+
+.phase-forensic .puzzle-world {
+  transform: scale(1.14);
+}
+
+.phase-forensic .puzzle-piece.revealed > path {
+  animation: fragmentBreathe 3.8s ease-in-out infinite alternate;
+  animation-delay: var(--pulse-delay);
+}
+
+.phase-detective .puzzle-world {
+  transform: scale(1.04);
+}
+
+.phase-detective .puzzle-piece.revealed {
+  transform: translate(var(--island-x), var(--island-y)) rotate(var(--island-r));
+}
+
+.phase-detective .piece-distorted > path,
+.phase-detective .piece-unresolved > path {
+  animation: fragmentQuestion 3.1s ease-in-out infinite alternate;
+  animation-delay: var(--pulse-delay);
+}
+
+.phase-contour .puzzle-world,
+.phase-complete .puzzle-world {
+  transform: scale(.94);
+}
+
+.phase-contour .puzzle-piece.revealed,
+.phase-complete .puzzle-piece.revealed {
+  transform: translate(var(--final-x), var(--final-y)) rotate(var(--final-r));
+}
+
+.phase-contour .piece-unresolved,
+.phase-complete .piece-unresolved {
+  opacity: .78;
+}
+
+.shadow-trace {
+  fill: none;
+  stroke: #292b29;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translate(var(--trace-x), var(--trace-y)) rotate(var(--trace-r));
+  transition: opacity 1.1s ease;
+}
+
+.phase-detective .shadow-trace {
+  opacity: .09;
+}
+
+.phase-contour .shadow-trace,
+.phase-complete .shadow-trace {
+  opacity: .035;
+}
+
+.elephant-details {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease 1.15s;
+}
+
+.phase-contour .elephant-details {
+  opacity: .32;
+}
+
+.phase-complete .elephant-details {
+  opacity: .52;
+}
+
+.elephant-outline,
+.elephant-ear,
+.elephant-tusk,
+.elephant-eye {
+  fill: none;
+  stroke: #202220;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.elephant-outline {
+  stroke-width: 2.2;
+  stroke-dasharray: 4 7;
+}
+
+.elephant-ear {
+  stroke-width: 1.8;
+  stroke-dasharray: 2 5;
+}
+
+.elephant-tusk {
+  stroke: #6d6f6b;
+  stroke-width: 5;
+}
+
+.elephant-eye {
+  stroke-width: 7;
+}
+
+.transition-status {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: clamp(28px, 4.5vh, 54px);
+  width: min(700px, calc(100vw - 48px));
+  text-align: center;
+  transform: translateX(-50%);
+  transition: opacity .65s ease, transform .9s ease;
+}
+
+.transition-kicker {
+  margin: 0 0 5px;
+  color: rgba(25, 27, 26, .52);
+  font-size: 12px;
+}
+
+.transition h1 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: 0;
+}
+
+.transition-copy {
+  margin: 8px auto 0;
+  max-width: 650px;
+  color: rgba(25, 27, 26, .68);
+  font-size: clamp(13px, 1.1vw, 16px);
+  line-height: 1.6;
+}
+
+.transition-count {
+  min-height: 20px;
+  margin: 6px 0 0;
+  color: rgba(25, 27, 26, .48);
+  font-size: 12px;
+}
+
+.phase-track {
+  position: absolute;
+  z-index: 7;
+  top: clamp(26px, 4vh, 50px);
+  right: clamp(24px, 5vw, 76px);
+  display: flex;
+  gap: clamp(12px, 2vw, 28px);
+  color: rgba(25, 27, 26, .38);
+  font-size: 11px;
+}
+
+.phase-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  transition: color .45s ease;
+}
+
+.phase-step i {
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  transition: background .45s ease, transform .45s ease;
+}
+
+.phase-step.active,
+.phase-step.done {
+  color: rgba(25, 27, 26, .88);
+}
+
+.phase-step.active i {
+  background: #1d1f1d;
+  transform: scale(1.32);
+}
+
+.phase-step.done i {
+  background: rgba(25, 27, 26, .38);
+}
+
+.report-link,
+.transition-resume {
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin-top: 9px;
+  padding: 0 16px;
+  border: 1px solid rgba(25, 27, 26, .42);
+  border-radius: 6px;
+  color: #1b1d1b;
+  text-decoration: none;
+  background: rgba(247, 245, 237, .76);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.report-link:not([hidden]),
+.transition-resume:not([hidden]) {
+  display: inline-flex;
+}
+
+.report-link:hover,
+.transition-resume:hover {
+  background: #f8f6ef;
+}
+
+.transition.report-handoff .puzzle-world {
+  opacity: .68;
+  transform: translateY(-31vh) scale(.34);
+}
+
+.transition.report-handoff .transition-status {
+  opacity: 0;
+  transform: translate(-50%, 24px);
+}
+
+.transition.report-handoff .phase-track,
+.transition.report-handoff .transition-question,
+.transition.report-handoff .transition-people {
+  opacity: 0;
+  transition: opacity .55s ease;
+}
+
+@keyframes fragmentBreathe {
+  from { opacity: .72; }
+  to { opacity: 1; }
+}
+
+@keyframes fragmentQuestion {
+  from { opacity: .58; }
+  to { opacity: 1; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 960px) {
+  .home-shell {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    width: min(820px, calc(100vw - 64px));
+    gap: clamp(36px, 6vw, 56px);
+  }
+
+  .image-stage {
+    min-height: min(52vw, 430px);
+  }
+
+  .text-stage {
+    max-width: none;
+    padding-bottom: 32px;
+  }
+
+  .transition-question {
+    width: min(470px, calc(100vw - 250px));
+  }
+
+  .puzzle-viewport {
+    top: 94px;
+  }
+}
+
+@media (max-width: 560px) {
+  .model-settings-trigger {
+    top: 14px;
+    right: 14px;
+  }
+
+  .setup-overlay {
+    align-items: end;
+    padding: 0;
+  }
+
+  .setup-dialog {
+    width: 100%;
+    max-height: 92vh;
+    padding: 30px 22px 26px;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .setup-dialog h1 {
+    font-size: 26px;
+  }
+
+  .home-shell {
+    width: min(100vw - 36px, 760px);
+    padding-top: 42px;
+  }
+
+  .image-stage {
+    min-height: 46vh;
+  }
+
+  .person-tray {
+    grid-template-columns: repeat(6, 34px);
+    grid-auto-rows: 46px;
+    gap: 7px 9px;
+  }
+
+  .person-icon {
+    width: 34px;
+    height: 46px;
+  }
+
+  .transition-scene {
+    min-height: 480px;
+  }
+
+  .transition-question {
+    top: 20px;
+    left: 20px;
+    width: calc(100vw - 40px);
+    max-height: 68px;
+    padding-right: 108px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+
+  .transition-question::before {
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+
+  .phase-track {
+    top: 23px;
+    right: 18px;
+    gap: 7px;
+  }
+
+  .phase-step {
+    gap: 4px;
+    font-size: 0;
+  }
+
+  .phase-step::after {
+    font-size: 10px;
+  }
+
+  .phase-step[data-step="forensic"]::after { content: "看清"; }
+  .phase-step[data-step="detective"]::after { content: "连接"; }
+  .phase-step[data-step="contour"]::after { content: "轮廓"; }
+
+  .puzzle-viewport {
+    inset: 92px 0 176px;
+  }
+
+  .puzzle-svg {
+    position: relative;
+    left: -20%;
+    width: 140%;
+    max-width: none;
+  }
+
+  .transition-person {
+    width: 25px;
+    height: 34px;
+  }
+
+  .transition-status {
+    bottom: 24px;
+    width: calc(100vw - 34px);
+  }
+
+  .transition h1 {
+    font-size: 23px;
+  }
+
+  .transition-copy {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .transition.report-handoff .puzzle-world {
+    transform: translateY(-34vh) scale(.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition,
+  .transition-person,
+  .puzzle-world,
+  .puzzle-piece,
+  .elephant-details,
+  .transition-status {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

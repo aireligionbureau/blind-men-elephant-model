@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/truth_contour.schema.json",
+  "title": "TruthContour",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "question",
+    "question_id",
+    "generation_mode",
+    "direct_answer",
+    "main_contour",
+    "key_conditions",
+    "stable_parts",
+    "boundary_conditions",
+    "important_unknowns",
+    "provenance_index"
+  ],
+  "properties": {
+    "schema_version": { "const": "bme.truth-contour.v2" },
+    "question": { "type": "string", "minLength": 1 },
+    "question_id": { "type": "string", "minLength": 1 },
+    "generation_mode": { "type": "string" },
+    "direct_answer": { "type": "string", "minLength": 1 },
+    "main_contour": { "type": "string", "minLength": 1 },
+    "key_conditions": { "type": "array", "items": { "type": "string" } },
+    "stable_parts": { "type": "array", "items": { "type": "string" } },
+    "boundary_conditions": { "type": "array", "items": { "type": "string" } },
+    "important_unknowns": { "type": "array", "items": { "type": "string" } },
+    "evidence_binding_contract": {
+      "type": "string",
+      "enum": ["sentence_level.v1", "legacy_statement_level"]
+    },
+    "sentence_evidence_bindings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sentenceBinding" }
+    },
+    "provenance_index": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/provenance" }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_binding_contract": { "const": "sentence_level.v1" }
+        },
+        "required": ["evidence_binding_contract"]
+      },
+      "then": {
+        "required": ["sentence_evidence_bindings"],
+        "properties": {
+          "sentence_evidence_bindings": { "minItems": 1 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "referenceSet": {
+      "type": "object",
+      "required": ["piece_ids", "relation_ids", "constraint_ids"],
+      "properties": {
+        "piece_ids": { "type": "array", "items": { "type": "string" } },
+        "relation_ids": { "type": "array", "items": { "type": "string" } },
+        "constraint_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "sentenceBinding": {
+      "allOf": [
+        { "$ref": "#/$defs/referenceSet" },
+        {
+          "type": "object",
+          "required": ["claim_id", "rendered_in", "claim_role", "statement", "epistemic_role", "classic_as_world_evidence"],
+          "properties": {
+            "claim_id": { "type": "string" },
+            "rendered_in": { "type": "string", "enum": ["direct_answer", "main_contour"] },
+            "claim_role": {
+              "type": "string",
+              "enum": ["verified_observation", "directional_judgment", "conditional_inference", "structural_relation", "definition_boundary", "important_unknown", "value_condition"]
+            },
+            "statement": { "type": "string", "minLength": 1 },
+            "epistemic_role": { "const": "diagnostic_method_not_world_evidence" },
+            "classic_as_world_evidence": { "const": false }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "allOf": [
+        { "$ref": "#/$defs/referenceSet" },
+        {
+          "type": "object",
+          "required": ["statement_id", "statement", "epistemic_role", "classic_as_world_evidence"],
+          "properties": {
+            "statement_id": { "type": "string" },
+            "statement": { "type": "string", "minLength": 1 },
+            "epistemic_role": { "const": "diagnostic_method_not_world_evidence" },
+            "classic_as_world_evidence": { "const": false }
+          }
+        }
+      ]
+    }
+  }
+}

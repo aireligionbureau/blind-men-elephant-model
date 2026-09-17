@@ -1,0 +1,46 @@
+{
+  "schema": "bme.offline-synthesis-replay.v1",
+  "source_run": "runs/20260725-232307-673115-standard-f36969",
+  "question": "韩国股市会不会崩盘",
+  "network_or_model_calls": 0,
+  "replay_status": "passed",
+  "validation": {
+    "detective_errors": [],
+    "contour_errors": []
+  },
+  "old": {
+    "relation_count": 24,
+    "accepted_relation_count": 17,
+    "accepted_traceability_rate": 1.0,
+    "classic_world_evidence_count": 0,
+    "contour_generation_mode": "live_adversarial_inference",
+    "contour_provenance_coverage": 1.0
+  },
+  "current": {
+    "detective_status": "succeeded",
+    "relation_count": 24,
+    "accepted_relation_count": 17,
+    "accepted_traceability_rate": 1.0,
+    "classic_world_evidence_count": 0,
+    "contour_status": "succeeded",
+    "contour_generation_mode": "live_adversarial_inference",
+    "contour_provenance_coverage": 1.0,
+    "prompt_packet": {
+      "schema": "bme.contour-prompt-packet.v1",
+      "material_mode": "lossless_packet_v2",
+      "full_case_characters": 118427,
+      "prompt_packet_characters": 66718,
+      "character_reduction_ratio": 0.4366,
+      "sent_material_characters": 66718,
+      "coverage_validation": "passed",
+      "task_relevant_material_removed": false
+    }
+  },
+  "non_regression": {
+    "accepted_relation_ids_identical": true,
+    "direct_answer_identical": true,
+    "main_contour_identical": true,
+    "key_conditions_identical": true,
+    "important_unknowns_identical": true
+  }
+}

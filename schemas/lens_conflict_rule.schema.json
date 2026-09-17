@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/blind-men-elephant/lens_conflict_rule.schema.json",
+  "title": "LensConflictRule",
+  "type": "object",
+  "required": [
+    "id",
+    "competing_lenses",
+    "confusion_pattern",
+    "decision_questions",
+    "prefer_first_when",
+    "prefer_second_when",
+    "coexist_when",
+    "misdiagnosis_risk"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "competing_lenses": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+    "confusion_pattern": { "type": "string" },
+    "decision_questions": { "type": "array", "items": { "type": "string" } },
+    "prefer_first_when": { "type": "array", "items": { "type": "string" } },
+    "prefer_second_when": { "type": "array", "items": { "type": "string" } },
+    "coexist_when": { "type": "array", "items": { "type": "string" } },
+    "misdiagnosis_risk": { "type": "string" }
+  }
+}

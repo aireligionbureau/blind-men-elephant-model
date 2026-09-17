@@ -1,5 +1,7 @@
 # 盲人摸象模型
 
+简体中文 | [English](README.en.md)
+
 <p align="center">
   <img src="homepage/assets/blind-men-elephant-model-icon.png" alt="由大象局部拼图构成的盲人摸象模型标志" width="180">
 </p>
